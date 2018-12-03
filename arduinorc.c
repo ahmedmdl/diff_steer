@@ -68,8 +68,8 @@ void loop() {
   analogWrite(Pin_1st_Motor, Speed_1st_Motor);                 //change speed
   analogWrite(Pin_2nd_Motor, Speed_2nd_Motor);
   if(Motor_Dir == High)
-    digitalWrite(Pin_Dir_1st_Motor, LOW);                  //change direction
-  if(Motor_Dir == LOW)
+    digitalWrite(Pin_Dir_1st_Motor, LOW);                  //1st_motor direction of rotation was opposite to 2nd_motor
+  if(Motor_Dir == LOW)                                     //so to make them spiin in the same dir i had to reverse one of them
     digitalWrite(Pin_Dir_1st_Motor, HIGH); 
   digitalWrite(Pin_Dir_2nd_Motor, Motor_Dir);
   delay(50);
