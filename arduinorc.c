@@ -67,11 +67,11 @@ void loop() {
 
   analogWrite(Pin_1st_Motor, Speed_1st_Motor);                 //change speed
   analogWrite(Pin_2nd_Motor, Speed_2nd_Motor);
-  if(Motor_Dir == High)
-    digitalWrite(Pin_Dir_1st_Motor, LOW);                  //1st_motor direction of rotation was opposite to 2nd_motor
-  if(Motor_Dir == LOW)                                     //so to make them spiin in the same dir i had to reverse one of them
-    digitalWrite(Pin_Dir_1st_Motor, HIGH); 
-  digitalWrite(Pin_Dir_2nd_Motor, Motor_Dir);
+  
+                                                   
+                                                  
+  digitalWrite(Pin_Dir_1st_Motor, (HIGH ^ Motor_Dir)); //1st_motor direction of rotation was opposite to 2nd_motor
+  digitalWrite(Pin_Dir_2nd_Motor, Motor_Dir);          //so to make them spin in the same dir i had to reverse one of them
   delay(50);
 }
 
@@ -185,20 +185,20 @@ void Motor_param_calc()
 //three different functions to try and calculate the braking force applied to the wheel closer to the turning curve's center
 
 //a linear function
-int func1()
+inline int func1()
 {
   return Motor_diff * steer_response;
 }
 
 //a sigmoid squashing function spin-off to make a non-linear braking ratio
 //subtracting from 255 is to align the function and get it in the first quadrant(result of exponential increases with motor_diff) 
-int func2()
+inline int func2()
 {
   return Motorspeed * steer_response / (1 + exp((255-Motor_diff * steer_response)/100));
 }
 
 //map function with in_min & out_min equal to 0
-int func3()
+inline int func3()
 {
   return Motor_diff * steer_response * 10 / 51 ;
 }
