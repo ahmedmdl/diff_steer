@@ -1,6 +1,7 @@
 #define CENTER 0                                    //defining by names for ease of use
 #define RIGHT 1
-#define LEFT 2                                  
+#define LEFT 2    
+enum direction {CENTER, RIGHT, LEFT};
 #define Pin_1st_Motor 2                             //motor drive pin
 #define Pin_2nd_Motor 5
 #define Pin_Dir_1st_Motor 4                         //motor direction pin
