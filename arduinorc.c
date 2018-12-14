@@ -51,7 +51,7 @@ void setup() {
 		    steer_ch_Interrupt,
 		    CHANGE);
     digitalWrite(Pin_Dir_1st_Motor, LOW);                              //initial direction of rotation cw
-    digitalWrite(Pin_Dir_2nd_Motor, HIGH); 
+    digitalWrite(Pin_Dir_2nd_Motor, HIGH);                             //motors have opposite intial direction of roatation so they are always reversed in code to mitigate this problem
     Serial.begin(9600);
 }
 
